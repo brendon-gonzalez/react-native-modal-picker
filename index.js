@@ -2,8 +2,7 @@
 
 import React,{
     PropTypes
-} from 'react';
-
+} from 'react'
 import {
     View,
     StyleSheet,
@@ -26,6 +25,7 @@ const propTypes = {
     initValue: PropTypes.string,
     style: View.propTypes.style,
     selectStyle: View.propTypes.style,
+    selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     optionStyle: View.propTypes.style,
     optionTextStyle: Text.propTypes.style,
     sectionStyle: View.propTypes.style,
@@ -41,6 +41,7 @@ const defaultProps = {
     onChange: ()=> {},
     initValue: 'Select me!',
     style: {},
+    selectedValue: {},
     selectStyle: {},
     optionStyle: {},
     optionTextStyle: {},
@@ -54,9 +55,9 @@ const defaultProps = {
 
 export default class ModalPicker extends BaseComponent {
 
-    constructor() {
+    constructor(props) {
 
-        super();
+        super(props);
 
         this._bind(
             'onChange',
@@ -69,7 +70,7 @@ export default class ModalPicker extends BaseComponent {
             animationType: 'slide',
             modalVisible: false,
             transparent: false,
-            selected: 'please select'
+            selected: 'please select',
         };
     }
 
@@ -79,7 +80,7 @@ export default class ModalPicker extends BaseComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-      if (nextProps.initValue != this.props.initValue) {
+      if (nextProps.initValue != this.props.initValue || nextProps.selectedValue === '') {
         this.setState({selected: nextProps.initValue});
       }
     }
