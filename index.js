@@ -1,8 +1,7 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react'
+import React, { PropTypes } from 'react';
+
 import {
     View,
     StyleSheet,
@@ -50,7 +49,7 @@ const defaultProps = {
     cancelStyle: {},
     cancelTextStyle: {},
     overlayStyle: {},
-    cancelText: 'cancel'
+    cancelText: 'Cancel'
 };
 
 export default class ModalPicker extends BaseComponent {
