@@ -174,7 +174,7 @@ export default class ModalPicker extends BaseComponent {
         return (
             <View style={this.props.style}>
                 {dp}
-                <TouchableOpacity onPress={this.open}>
+                <TouchableOpacity style={{flex: 1}} onPress={this.open}>
                     {this.renderChildren()}
                 </TouchableOpacity>
             </View>
